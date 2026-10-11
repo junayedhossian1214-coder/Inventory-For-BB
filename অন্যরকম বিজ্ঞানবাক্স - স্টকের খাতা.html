@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8"><title>ইনভেন্টরি</title>
+<link rel="icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABAAEADASIAAhEBAxEB/8QAGgABAQADAQEAAAAAAAAAAAAAAAECAwUGB//EACoQAAEDAwMFAAEEAwAAAAAAAAEAAgMEESESEzEFBiJBURUUFmHBMmJx/8QAGgEBAAIDAQAAAAAAAAAAAAAAAAEFAgMEB//EACcRAAIBAwIGAQUAAAAAAAAAAAABEQIDIQSBBRIxUbHBQRVxkfDx/9oADAMBAAIRAxEAPwDrkm5yUufpQ8lRePye6JFufpS5+lREkQW5+lLn6VESRBbn6UufpURJEFPJUVPJUQILt9v9Pp/zFAytqWRufLHIWYIYzDi55OB45Dck4vZcQ8L3fa7KITdQqajbbM7p7P0r3Otqbshr9Po2IAPsLXf1K0lmrUOnm5YxucPELzt2nHZ9Nl7nY4PcfTqf831BlFUtke2WSQMIAD2G7g5hGD45Lce7XXCX07v9nS3O6HV0m0+rb01xrJGPvpj2NMer0LkkD2eMr5iOB/xWfEbCs3ml3+Nn7g18K1Lv2E3PT53XqV9wiIuAsynkqsa572sYLucQ0D6SbBQ8lZ00m1UxSkX0SNfb7Yg/0pXXJi5jB339o1rC8PqoRodoeRFK5ode1rhluVvp+3upUokhNTA6I+UsMtNMWH1cjRg/7Cx/lYy9zU0sNRG+jqCyoIa+DdbtMb5guYLeLzqvfOQfq2T93xzzME3ThPE2PQTIW65Dra4uIA0jjgDJAJvm9qloqcp+SjqfEasOmfwY1HQa6o2YDKdkkubDS0km2xtv8rEAuJOL5POfS1HtSUE+dUQHBpIpHGxJAsc4OeP4WyDumMCHeiqi+GPQXxvY0z+LmgSADIGoHHu/1bv3ZRXc4UNYHySNdJpnaGaWvc6wYWkEnVk4va/KyS0VWan5MX9RoxSvHf8Af6eTlZtyvjN/FxbkW4NuFgttVJvVU0wFtyRz7fLkn+1qVQ4nBf0zCkp5Kip5KigIIiISEREAREQH/9k="><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f5fa;--sf:#fff;--ink:#1a1f2e;--mu:#6a7287;--ln:#e5e8f1;--ac:#d9530d;--on:#fff;--ok:#12a37f;--lo:#e08a00;--no:#e5484d;--tr:#eceef6;--sh:0 1px 2px #1a1f2e0d,0 6px 20px #1a1f2e10;--hero:linear-gradient(135deg,#f46f24,#ea5f14 60%,#d9530d);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1017;--sf:#161a24;--ink:#e9ecf5;--mu:#8e97ad;--ln:#262c3b;--ac:#ff9556;--on:#1f1206;--ok:#3ecfa5;--lo:#f0a63a;--no:#f2777b;--tr:#1f2431;--sh:0 1px 2px #0006,0 8px 24px #0005;--hero:linear-gradient(135deg,#a8430c,#c4560f 60%,#d9611c)}}
+:root[data-theme="dark"]{--bg:#0d1017;--sf:#161a24;--ink:#e9ecf5;--mu:#8e97ad;--ln:#262c3b;--ac:#ff9556;--on:#1f1206;--ok:#3ecfa5;--lo:#f0a63a;--no:#f2777b;--tr:#1f2431;--sh:0 1px 2px #0006,0 8px 24px #0005;--hero:linear-gradient(135deg,#a8430c,#c4560f 60%,#d9611c)}
+*{box-sizing:border-box}[hidden]{display:none!important}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 "Hind Siliguri",system-ui,sans-serif;padding:14px 14px 56px}
+main{max-width:900px;margin:auto}
+button,input,select{font:inherit;color:var(--ink)}button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.hero{position:relative;overflow:hidden;background:var(--hero);color:#fff;border-radius:26px;padding:26px 22px 22px;box-shadow:0 14px 34px #f46f2440}
+.hero::before{content:"";position:absolute;right:-60px;top:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#ffffff33,#ffffff00 70%)}
+.hero::after{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#ffffff22,#ffffff00 70%)}
+.hero>*{position:relative;z-index:1}
+h1{margin:0;font:700 clamp(28px,6.5vw,38px)/1.25 "Hind Siliguri",sans-serif}
+.hero .sub{margin:2px 0 20px;color:#ffffffcc}
+.sub{color:var(--mu);margin:0}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sum div{background:#ffffff22;border:1px solid #ffffff33;border-radius:16px;padding:12px 14px;backdrop-filter:blur(6px)}
+.sum b{display:block;font:700 clamp(26px,6vw,34px)/1.15 "Hind Siliguri",sans-serif}
+.sum span{font-size:12.5px;color:#ffffffd6}
+.seg{display:inline-flex;background:var(--tr);border-radius:999px;padding:4px;gap:2px}
+.seg button{border:0;background:none;color:var(--mu);padding:8px 18px;border-radius:999px;font-weight:500}
+.seg button.on{background:var(--sf);color:var(--ink);box-shadow:0 1px 3px #0000001f;font-weight:600}
+#tabs{margin:18px 0 14px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+input.s{flex:1;min-width:150px;padding:11px 18px;border:1px solid var(--ln);border-radius:999px;background:var(--sf);box-shadow:var(--sh)}
+select{padding:10px 14px;border:1px solid var(--ln);border-radius:999px;background:var(--sf)}
+.ghost{background:var(--sf);border:1px solid var(--ln);border-radius:999px;padding:9px 16px;font-weight:500}
+.ghost:hover{background:var(--tr)}#lw.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+.add{background:var(--ac);color:var(--on);border:0;border-radius:999px;padding:10px 20px;font-weight:600;box-shadow:0 4px 14px #d9530d40}
+.add:hover{filter:brightness(1.06)}.add:active{transform:translateY(1px)}
+button:disabled{opacity:.45;cursor:default}
+.sync{margin:0 0 12px;font-size:13px;color:var(--mu)}
+ul{list-style:none;margin:0;padding:0}
+.r{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1.2fr) auto;gap:8px 22px;align-items:center;background:var(--sf);border-radius:18px;box-shadow:var(--sh);padding:14px 18px 14px 24px;margin-bottom:12px}
+.r::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--ac)}
+.r.ok::before{background:var(--ok)}.r.low::before{background:var(--lo)}.r.out::before{background:var(--no)}
+.nm b{display:block;font-weight:600;font-size:16.5px;line-height:1.35}.nm small{color:var(--mu);font-size:13px}
+.tag{display:inline-block;background:var(--tr);color:var(--mu);border-radius:7px;padding:0 8px;margin-right:6px;font-size:12px}
+.st{display:flex;align-items:center;gap:12px}
+.ring{position:relative;width:52px;height:52px;flex:none}.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}.ring .t{stroke:var(--tr)}.ring .v{stroke:var(--ok);stroke-linecap:round}
+.low .ring .v{stroke:var(--lo)}.out .ring .v{stroke:var(--no)}
+.ring em{position:absolute;inset:0;display:grid;place-items:center;font:600 11.5px "Hind Siliguri",sans-serif;font-style:normal}
+.nu{display:flex;flex-direction:column;line-height:1.4;color:var(--mu);font-size:13px}.nu strong{color:var(--ink);font-size:16px;font-weight:600}
+.low .nu strong{color:var(--lo)}.out .nu strong{color:var(--no)}
+.ac{display:flex;gap:4px;flex-wrap:wrap}
+.ac button{border:0;background:var(--tr);color:var(--mu);padding:6px 12px;border-radius:10px;font-size:13.5px;font-weight:500}
+.ac button:hover{color:var(--ink)}.ac .go{background:var(--ac);color:var(--on);font-weight:600}
+.empty{text-align:center;color:var(--mu);padding:36px 16px;border:1.5px dashed var(--ln);border-radius:18px}
+.wk{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-bottom:12px}
+.wk div{background:var(--sf);border-radius:16px;box-shadow:var(--sh);padding:12px 16px}.wk b{display:block;font-size:13px;color:var(--mu);font-weight:500}.wk span{font-size:14px}
+.adc{background:var(--sf);border-radius:18px;box-shadow:var(--sh);padding:16px 18px;margin-bottom:12px}
+.adc h4{margin:0 0 8px;font-size:16px;font-weight:600}.mu{color:var(--mu);font-size:13px;margin:0 0 8px}
+.adc table{width:100%;border-collapse:collapse;font-size:14px}.adc th,.adc td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--ln)}.adc th{color:var(--mu);font-weight:500;font-size:12px}
+.w{overflow-x:auto}
+.ai{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--ln);font-size:14px}.ai small{color:var(--mu)}
+.ai b.out{color:var(--no)}.ai b.low{color:var(--lo)}.ai button{border:0;background:var(--tr);border-radius:9px;padding:4px 10px;font-size:13px}
+.bar2{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.bar2 button:not(.add){background:var(--sf);border:1px solid var(--ln);border-radius:999px;padding:8px 16px;font-weight:500}
+.fi,.bar2 input,dialog input,dialog select{width:100%;padding:10px 14px;border:1px solid var(--ln);border-radius:12px;background:var(--bg)}
+.bar2 input{width:90px}.fi{margin:2px 0 8px}
+.lgn{max-width:420px;margin:18px auto}
+dialog{border:0;border-radius:22px;background:var(--sf);color:var(--ink);width:min(400px,92vw);padding:22px;box-shadow:0 24px 60px #0006}
+dialog::backdrop{background:#0b0e1699;backdrop-filter:blur(2px)}
+dialog h3{margin:0 0 6px;font-size:20px;font-weight:700}dialog label{display:block;font-size:13px;color:var(--mu);margin-top:12px}
+.fb{margin-top:18px;display:flex;gap:8px}
+@media(max-width:640px){.r{grid-template-columns:1fr;padding:14px 16px 14px 22px}.ac{justify-content:flex-end}.hero{padding:22px 16px 16px;border-radius:22px}.sum{gap:8px}.sum div{padding:10px 11px}input,select{font-size:16px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+#pr{display:none}
+@media print{body>*:not(#pr){display:none!important}#pr{display:block!important}body{background:#fff!important;padding:0!important}@page{size:A4;margin:14mm}}
+.rqf{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+textarea.fi{font:inherit;color:var(--ink);resize:vertical}
+.rqt input{width:90px;padding:6px 10px;border:1px solid var(--ln);border-radius:10px;background:var(--bg)}
+.rqt button{border:0;background:var(--tr);border-radius:8px;padding:3px 9px}
+.wn{color:var(--no)}.mu2{color:var(--mu)}
+#rq .ai button{border:0;background:var(--tr);border-radius:9px;padding:4px 10px;font-size:13px}
+</style>
+<style>
+.gate{min-height:86vh;display:grid;align-items:center}
+.who{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin:-6px 0 8px;font-size:12.5px;color:#ffffffcc}
+.who button{background:#ffffff26;border:1px solid #ffffff40;color:#fff;border-radius:999px;padding:3px 12px;font-size:12.5px}
+</style>
+<style>
+.brand{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.brand .sub{margin:2px 0 0}
+.logo{width:78px;height:78px;border-radius:20px;object-fit:cover;flex:none;border:2px solid #ffffff59;box-shadow:0 8px 20px #0000003a}
+.logo.big{display:block;width:118px;height:118px;border-radius:28px;margin:0 auto 14px;border:0;box-shadow:0 12px 28px #f46f2455}
+.gate .lgn{text-align:center}.gate .lgn label,.gate .lgn .fi,.gate .lgn input{text-align:left}.gate .lgn label.mu{display:block}
+@media(max-width:640px){.logo{width:64px;height:64px;border-radius:17px}}
+</style>
+<style>
+.bk{background:var(--sf);border:1px solid var(--lo);border-radius:14px;padding:10px 14px;margin:14px 0 0;font-size:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bk button{border:0;background:var(--ac);color:var(--on);border-radius:999px;padding:5px 14px;font-weight:600}
+.pos{color:var(--ok)!important}.neg{color:var(--no)!important}
+dialog{max-height:90vh;overflow:auto}
+.rb{display:grid;grid-template-columns:minmax(80px,1.2fr) 3fr auto;gap:8px;align-items:center;padding:4px 0;font-size:14px}
+.rb div{background:var(--tr);border-radius:6px;height:10px;overflow:hidden}.rb i{display:block;height:100%;background:var(--ac)}
+.chart{display:flex;align-items:flex-end;gap:2px;height:130px;overflow-x:auto}
+.chart .col{flex:1;min-width:11px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.chart .col i{display:block;width:100%;background:var(--ac);border-radius:3px 3px 0 0;min-height:1px}.chart .col span{font-size:9px;color:var(--mu)}
+select#fc,select#fl{max-width:170px}
+#tabs{flex-wrap:wrap}
+</style>
+</head><body><div id="gate" class="gate" hidden><div class="adc lgn"><img id="gl" class="logo big" alt="অন্যরকম বিজ্ঞানবাক্স"><h4 style="font-size:22px;text-align:center">স্টকের খাতা</h4><p class="mu">চালিয়ে যেতে জিমেইল ও পাসওয়ার্ড দিয়ে লগইন করুন।</p><label class="mu">জিমেইল</label><input id="lem" class="fi" type="email" autocomplete="username"><label class="mu">পাসওয়ার্ড</label><input id="lpw" class="fi" type="password" autocomplete="current-password"><label class="mu" style="display:flex;gap:8px;align-items:center"><input id="lkp" type="checkbox" style="width:auto"> এই ডিভাইসে লগইন মনে রাখুন</label><p id="lerr" class="mu" style="color:var(--no);min-height:1.4em"></p><button class="add" style="width:100%" onclick="doLogin()">লগইন</button></div></div>
+<main id="mn">
+<header class="hero"><div class="who"><span id="whoe"></span><button onclick="logout()">বের হন</button></div><div class="brand"><img id="bl" class="logo" alt="অন্যরকম বিজ্ঞানবাক্স"><div><h1 id="h1">স্টকের খাতা</h1><p class="sub" id="sb">বিজ্ঞানবাক্স ও উৎকর্ষের সব আইটেম এক জায়গায়</p></div></div>
+<div class="sum"><div><b id="k1">0</b><span>মোট আইটেম</span></div><div><b id="k2">0</b><span>স্টকে আছে</span></div><div><b id="k3">0</b><span>শেষ বা কমে এসেছে</span></div></div></header>
+<div id="bk" class="bk" hidden></div>
+<div class="seg" id="tabs" style="width:max-content;margin-bottom:12px"><button class="on" data-v="s">স্টক</button><button data-v="l">লেনদেন লগ</button><button data-v="q" id="rqt">রিকুইজিশন</button><button data-v="p">রিপোর্ট</button><button data-v="a" id="adt" hidden>অ্যাডমিন</button></div>
+<div class="tools" id="tl"><div class="seg" id="seg"><button class="on" data-v="">সব</button><button data-v="বিজ্ঞানবাক্স">বিজ্ঞানবাক্স</button><button data-v="উৎকর্ষ">উৎকর্ষ</button></div>
+<input class="s" id="q" placeholder="আইটেম খুঁজুন"><select id="so" title="সাজান"><option value="">সাজান: ডিফল্ট</option><option value="low">কম বাকি আগে</option><option value="n">নাম অনুযায়ী</option></select><select id="fc" hidden></select><select id="fl" hidden></select><button id="lw" class="ghost">কম/শেষ</button><button class="add" id="addb" onclick="openF()">নতুন আইটেম</button><button class="ghost" id="csvb" hidden onclick="csv()">CSV নামান</button></div>
+<p class="sync"><span id="sync">শুধু এই ব্রাউজারে সেভ হচ্ছে</span> <button class="ghost" id="up" hidden onclick="upAll()" style="padding:3px 10px;font-size:13px;margin-left:6px">ডেটা অনলাইনে তুলুন</button></p>
+<ul id="ls"></ul><div id="wk" class="wk" hidden></div><ul id="lg" hidden></ul><div id="ad" hidden></div><div id="rq" hidden></div><div id="rp" hidden></div></main>
+<dialog id="d"><h3 id="dt">আইটেম</h3>
+<label>নাম</label><input id="n"><label>তারিখ</label><input id="dd" placeholder="dd-mm-yyyy">
+<label>মোট পরিমাণ</label><input id="t" type="number" min="0"><label>বিতরণ হয়েছে</label><input id="u" type="number" min="0" value="0">
+<label>প্রতিষ্ঠান</label><select id="c"><option>বিজ্ঞানবাক্স</option><option>উৎকর্ষ</option></select>
+<label>একক</label><input id="un" list="unl"><datalist id="unl"><option>পিস<option>রিম<option>বক্স<option>প্যাকেট<option>ডজন<option>সেট<option>কেজি</datalist><label>ক্যাটাগরি</label><input id="ct" list="ctl"><datalist id="ctl"></datalist><label>অবস্থান / আলমারি</label><input id="lc" list="lcl"><datalist id="lcl"></datalist><label>দাম (প্রতি একক, ঐচ্ছিক)</label><input id="pr" type="number" min="0"><label>আলাদা কম-স্টকের সীমা % (ঐচ্ছিক)</label><input id="lm" type="number" min="0" max="90">
+<div class="fb"><button class="add" onclick="save()">সেভ করুন</button><button class="ghost" onclick="d.close()">বাদ দিন</button></div></dialog>
+<dialog id="x"><h3>মুছে ফেলবেন?</h3><p id="xt" style="color:var(--mu);margin:6px 0 0"></p><div class="fb"><button class="add" style="background:var(--no);color:#fff" onclick="doDel()">হ্যাঁ, মুছুন</button><button class="ghost" onclick="x.close()">না</button></div></dialog>
+<input type="file" id="rf" accept=".json,application/json" hidden><input type="file" id="imf" accept=".csv,.txt,.xlsx,.xls" hidden>
+<dialog id="tx"><h3 id="txt"></h3><label id="txl">পরিমাণ</label><input id="txq" type="number"><label id="txn">নোট</label><input id="txr" list="rl"><label>তারিখ</label><input id="txd" type="date"><p id="txh" class="mu" style="margin-top:8px"></p><div class="fb"><button class="add" onclick="doTx()">নিশ্চিত করুন</button><button class="ghost" onclick="tx.close()">বাদ দিন</button></div></dialog>
+<dialog id="cf"><h3>নিশ্চিত করুন</h3><p id="cm" style="color:var(--mu);margin:6px 0 0"></p><div class="fb"><button class="add" id="cok">হ্যাঁ</button><button class="ghost" onclick="cf.close()">না</button></div></dialog>
+<dialog id="y"><h3 id="yt">স্টক যোগ</h3><label>কত পরিমাণ নতুন এলো?</label><input id="yq" type="number" min="1"><div class="fb"><button class="add" onclick="addStock()">যোগ করুন</button><button class="ghost" onclick="y.close()">বাদ দিন</button></div></dialog>
+<dialog id="g"><h3 id="gt">বিতরণ</h3><label>কত পরিমাণ বিতরণ করলেন?</label><input id="gq" type="number" min="1"><label>কাকে বা কোথায় দিলেন (ঐচ্ছিক)</label><input id="gr" list="rl"><datalist id="rl"></datalist><label>তারিখ</label><input id="gd" type="date">
+<div class="fb"><button class="add" onclick="give()">বিতরণ করুন</button><button class="ghost" onclick="g.close()">বাদ দিন</button></div></dialog>
+<div id="pr"></div>
+<script>
+const B="বিজ্ঞানবাক্স",U="উৎকর্ষ",D="29-10-2025";
+const seed=[["স্কুল ইভেন্টের লিফলেট (বাংলা)","28-09-2026",57000,45000,B],["রেগুলার লিফলেট","07-02-2026",50000,39110,B],["স্কুল ইভেন্টের লিফলেট (ইংলিশ)","05-05-2026",35000,14894,B],["বোর্ড শপ সাইন","22-09-2025",400,191,B],["লেটার","16-06-2026",20000,20000,B],
+["স্যাটার স্টিকার ৩ ইঞ্চি",D,270,0,B],["স্যাটার স্টিকার ৫ ইঞ্চি",D,300,0,B],["দাংলার",D,300,0,B],["রং পেন্সিল",D,35,0,B],["পেন্সিল বক্স",D,8,0,B],["রুবিকস কিউব",D,9,0,B],["জ্যামিতি বক্স",D,1,0,B],["খাতা",D,3,0,B],["টি-শার্ট",D,14,0,U],["টি-শার্ট",D,6,0,B],["কলম",D,17,0,U],["চাবির রিং",D,4,0,B],["নোট-বুক",D,68,1,U],["নোট-প্যাড",D,2,0,B],["ব্যাক প্যাক (ছেলেদের)",D,4,0,U],["পেপার-ব্যাগ",D,40,0,U],["ডিল-মেশিন",D,1,0,B],["Glu Ghum Machine",D,1,0,B],["ইঞ্চি-টেপ",D,1,0,B],["ক্যালকুলেটর",D,2,0,B],["মার্কার",D,2,0,B],["কাঁচি",D,1,0,B],["স্ট্যাপলার-মেশিন",D,3,0,B],["জ্যাকেট",D,1,0,B],["ক্রেস্ট",D,4,0,U],["পেন্সিল-ব্যাগ",D,10,0,U],["ফাইল",D,5,0,U],["টুপি",D,2,0,B],["মেয়েদের-ব্যাকপ্যাক",D,2,0,U],["বইমেলা লিফলেট ২০২৬","",10000,10000,B]]
+.map((r,i)=>({id:i+1,n:r[0],d:r[1],t:r[2],u:r[3],c:r[4]}));
+let items=seed.map(x=>({...x})),log=[],K="inv_v1",LK="inv_log_v1",eid=null,gid=null,did=null,F="",V="s",DB=null,dl=null,UP=false,LW=false,yid=null,reqs=[],RD=null,hist=[],RM="",TXK="",TXI=0,SESS=null,users=[],gu=false,AD=false,ROLE=true,UNLOCK=false,UE="",CH="",FA=0,LKT=0,TH=.1,TT="স্টকের খাতা",SB="বিজ্ঞানবাক্স ও উৎকর্ষের সব আইটেম এক জায়গায়",RF=null;
+try{const t=localStorage.getItem("inv_th");if(t)TH=+t;const z=JSON.parse(localStorage.getItem("inv_set")||"null");if(z){TT=z.title||TT;SB=z.sub||SB}}catch(e){}
+try{const s=localStorage.getItem(K);if(s)items=JSON.parse(s);const l=localStorage.getItem(LK);if(l)log=JSON.parse(l);const rq0=localStorage.getItem("inv_rq_v1");if(rq0)reqs=JSON.parse(rq0);const hs0=localStorage.getItem("inv_hist");if(hs0)hist=JSON.parse(hs0);
+ if(!localStorage.getItem("inv_v2")){items.forEach(x=>{const m=log.filter(e=>e.i===x.id).reduce((a,e)=>a+e.q,0);x.u=Math.max(0,x.u-m)});localStorage.setItem("inv_v2","1")}}catch(e){}
+const $=id=>document.getElementById(id),bn=n=>n.toLocaleString("bn-BD");
+const E=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sumL=id=>log.filter(l=>l.i===id).reduce((a,l)=>{const k=l.k||"out";return a+(k==="out"?l.q:k==="ret"?-l.q:0)},0);
+const sumK=(id,k)=>log.filter(l=>l.i===id&&(l.k||"out")===k).reduce((a,l)=>a+l.q,0);
+const dstamp=v=>{const d=v?new Date(v+"T"+new Date().toTimeString().slice(0,8)):new Date();return (isNaN(d)?new Date():d).toISOString()};
+
+const LOGO="data:image/jpeg;base64,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";
+const H0="ca8e31460ad4e3e8abc25df77bb8524ff5a7a50c59092d87e304bfa61612fd35";
+const SK=[],SH=[];(()=>{const pr=[];for(let c=2;pr.length<64;c++){let o=1;for(let d=2;d*d<=c;d++)if(c%d===0){o=0;break}if(o)pr.push(c)}pr.forEach((p,i)=>{SK[i]=(Math.cbrt(p)%1)*4294967296|0;if(i<8)SH[i]=(Math.sqrt(p)%1)*4294967296|0})})();
+const R=(n,x)=>(x>>>n)|(x<<(32-n));
+function sha(str){const u=Uint8Array.from(unescape(encodeURIComponent(str)),c=>c.charCodeAt(0)),l=u.length,n=((l+9+63)>>6)<<6,m=new Uint8Array(n);m.set(u);m[l]=128;
+ const dv=new DataView(m.buffer);dv.setUint32(n-4,(l*8)>>>0);dv.setUint32(n-8,Math.floor(l*8/4294967296));
+ let h=SH.slice();const w=new Int32Array(64);
+ for(let o=0;o<n;o+=64){for(let i=0;i<16;i++)w[i]=dv.getInt32(o+i*4);
+  for(let i=16;i<64;i++){const a=w[i-15],c=w[i-2];w[i]=(w[i-16]+(R(7,a)^R(18,a)^(a>>>3))+w[i-7]+(R(17,c)^R(19,c)^(c>>>10)))|0}
+  let [a,b,c,d,e,f,g,k]=h;
+  for(let i=0;i<64;i++){const t1=(k+(R(6,e)^R(11,e)^R(25,e))+((e&f)^(~e&g))+SK[i]+w[i])|0,t2=((R(2,a)^R(13,a)^R(22,a))+((a&b)^(a&c)^(b&c)))|0;k=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0}
+  h=[h[0]+a|0,h[1]+b|0,h[2]+c|0,h[3]+d|0,h[4]+e|0,h[5]+f|0,h[6]+g|0,h[7]+k|0]}
+ return h.map(x=>(x>>>0).toString(16).padStart(8,"0")).join("")}
+function hh(em,pw){let h="stk1:"+em.trim().toLowerCase()+":"+pw;for(let i=0;i<3000;i++)h=sha(h+i);return h}
+
+try{CH=localStorage.getItem("inv_ch")||H0;const u0=localStorage.getItem("inv_users");if(u0)users=JSON.parse(u0);
+ const ss=JSON.parse(sessionStorage.getItem("inv_sess")||localStorage.getItem("inv_sess")||"null");
+ if(ss&&ss.h){if(ss.h===CH)SESS={e:ss.e,role:"admin",h:ss.h};else{const u=users.find(x=>x.e===ss.e&&x.h===ss.h);if(u)SESS={e:ss.e,role:u.role==="admin"?"admin":"member",h:ss.h}}}}catch(e){CH=H0}
+AD=!!SESS&&SESS.role==="admin"&&(ROLE||SESS.h===CH);
+function saveSess(keep){try{localStorage.removeItem("inv_sess");sessionStorage.removeItem("inv_sess");if(SESS)(keep?localStorage:sessionStorage).setItem("inv_sess",JSON.stringify({e:SESS.e,h:SESS.h}))}catch(e){}}
+function chk(em,pw){const h=hh(em,pw);if(h===CH)return{e:em,role:"admin",h};const u=users.find(x=>x.e===em&&x.h===h);return u?{e:em,role:u.role==="admin"?"admin":"member",h}:null}
+function gate(){const on=!!SESS;AD=on&&SESS.role==="admin"&&(ROLE||SESS.h===CH);$("gate").hidden=on;$("mn").hidden=!on;$("adt").hidden=!(on&&SESS.role==="admin");$("addb").hidden=!AD;$("whoe").textContent=on?SESS.e+(SESS.h===CH?" (মূল অ্যাডমিন)":""):""}
+function doLogin(){if(Date.now()<LKT){$("lerr").textContent="কিছুক্ষণ পরে আবার চেষ্টা করুন";return}
+ const em=$("lem").value.trim().toLowerCase(),pw=$("lpw").value,s=em&&chk(em,pw);
+ if(s){FA=0;SESS=s;saveSess($("lkp").checked);$("lpw").value="";$("lerr").textContent="";applyRole()}
+ else if(DB&&!gu){$("lerr").textContent="ইউজার তালিকা লোড হচ্ছে, একটু পরে আবার চাপুন"}
+ else{FA++;if(FA>=5){LKT=Date.now()+30000;FA=0;$("lerr").textContent="অনেকবার ভুল হয়েছে, ৩০ সেকেন্ড অপেক্ষা করুন"}else $("lerr").textContent="জিমেইল বা পাসওয়ার্ড মিলছে না";$("lpw").value=""}}
+function logout(){SESS=null;saveSess(false);tab("s");applyRole()}
+function verify(){if(!SESS||SESS.h===CH)return;const u=users.find(x=>x.e===SESS.e&&x.h===SESS.h);if(!u){logout();return}SESS.role=u.role==="admin"?"admin":"member"}
+function usersHtml(){return `<div class="adc"><h4>ইউজার ও অ্যাক্সেস (${bn(users.length)})</h4><p class="mu">যাকে অ্যাক্সেস দেবেন তার জিমেইল ও একটা পাসওয়ার্ড দিন। সে অ্যাপ খুললে এই জিমেইল-পাসওয়ার্ড দিয়ে ঢুকবে।</p>
+<div class="rqf"><div><label class="mu">জিমেইল</label><input id="ue" class="fi" type="email" autocomplete="off"></div><div><label class="mu">পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</label><input id="upw" class="fi" type="text" autocomplete="off"></div><div><label class="mu">ধরন</label><select id="ur" class="fi"><option value="member">সাধারণ (দেখা, বিতরণ, রিকুইজিশন)</option><option value="admin">অ্যাডমিন</option></select></div></div>
+<div class="bar2"><button class="add" onclick="addUser()">যোগ করুন</button><span id="um" class="mu" style="margin:0"></span></div>
+${users.map(u=>`<div class="ai"><span>${E(u.e)} <small>${u.role==="admin"?"অ্যাডমিন":"সাধারণ"}</small></span><span><button onclick="resetUser(${u.id})">পাসওয়ার্ড রিসেট</button> <button onclick="delUser(${u.id})">সরান</button></span></div>`).join("")}<p class="mu" style="margin-top:8px">পাসওয়ার্ড রিসেট করতে উপরের পাসওয়ার্ড ঘরে নতুন পাসওয়ার্ড লিখে ইউজারের পাশে "পাসওয়ার্ড রিসেট" চাপুন।</p></div>`}
+function addUser(){const e=$("ue").value.trim().toLowerCase(),p=$("upw").value,r=$("ur").value,m=$("um");
+ if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){m.textContent="সঠিক জিমেইল দিন";return}
+ if(p.length<6){m.textContent="পাসওয়ার্ড কমপক্ষে ৬ অক্ষর";return}
+ if(users.some(u=>u.e===e)){m.textContent="এই জিমেইল আগেই আছে";return}
+ const u={id:Date.now(),e,h:hh(e,p),role:r,at:new Date().toISOString()};users.push(u);W(()=>DB.collection("users").doc(String(u.id)).set(u));persist();renderAdmin();$("um").textContent="যোগ করা হয়েছে"}
+function resetUser(id){const u=users.find(x=>x.id===id),p=$("upw").value;if(!u)return;if(p.length<6){$("um").textContent="উপরের ঘরে নতুন পাসওয়ার্ড লিখুন (কমপক্ষে ৬ অক্ষর)";return}
+ u.h=hh(u.e,p);W(()=>DB.collection("users").doc(String(u.id)).set(u));persist();renderAdmin();$("um").textContent="পাসওয়ার্ড বদলানো হয়েছে"}
+function delUser(id){const u=users.find(x=>x.id===id);if(!u)return;ask(u.e+" কে সরাবেন? সে আর ঢুকতে পারবে না।",()=>{users=users.filter(x=>x.id!==id);W(()=>DB.collection("users").doc(String(id)).delete());persist();renderAdmin()})}
+function writeSettings(){W(()=>DB.collection("settings").doc("main").set({th:Math.round(TH*100),title:TT,sub:SB,ch:CH}))}
+function changePw(){const p=$("npw").value;if(!SESS||SESS.h!==CH){$("pwm").textContent="শুধু মূল অ্যাডমিন বদলাতে পারবেন";return}if(p.length<6){$("pwm").textContent="কমপক্ষে ৬ অক্ষর দিন";return}
+ CH=hh(SESS.e,p);SESS.h=CH;saveSess(!!localStorage.getItem("inv_sess"));try{localStorage.setItem("inv_ch",CH)}catch(e){}writeSettings();$("npw").value="";$("pwm").textContent="পাসওয়ার্ড বদলানো হয়েছে"}
+function calc(){const S={};log.forEach(l=>{const o=S[l.i]||(S[l.i]={o:0,n:0,r:0,a:0}),k=l.k||"out";if(k==="in")o.n+=l.q;else if(k==="ret")o.r+=l.q;else if(k==="adj")o.a+=l.q;else o.o+=l.q});
+ items.forEach(x=>{const o=S[x.id]||{o:0,n:0,r:0,a:0};x.T=x.t+o.n;x.e=x.u+o.o-o.r;x.r=x.T-x.e+o.a})}
+function persist(){try{localStorage.setItem(K,JSON.stringify(items.map(({e,T,r,...z})=>z)));localStorage.setItem(LK,JSON.stringify(log));localStorage.setItem("inv_rq_v1",JSON.stringify(reqs));localStorage.setItem("inv_users",JSON.stringify(users));localStorage.setItem("inv_hist",JSON.stringify(hist))}catch(e){}}
+const W=f=>{if(DB)f().catch(()=>{$("sync").textContent="অনলাইনে সেভ হয়নি। ইন্টারনেট ঠিক আছে কিনা দেখুন, আর এই Claude অ্যাকাউন্টে এডিটের অনুমতি আছে কিনা দেখুন"})};
+const rec=x=>({id:x.id,n:x.n,d:x.d||"",t:x.t,u:x.u,c:x.c,un:x.un||"",ct:x.ct||"",lc:x.lc||"",pr:x.pr||0,lm:x.lm||0});
+const wItem=x=>W(()=>DB.collection("items").doc(String(x.id)).set(rec(x)));
+const wLog=e=>W(()=>DB.collection("log").doc(String(e.id)).set(e));
+const st=x=>{const r=x.r,th=x.lm?x.lm/100:TH;return r<=0?"out":x.T&&r/x.T<th?"low":"ok"};
+
+const nz=(a,f)=>a.reduce((m,x)=>m+f(x),0);
+function ask(msg,fn){$("cm").textContent=msg;$("cok").onclick=()=>{$("cf").close();fn()};$("cf").showModal()}
+function fold(days){const lim=Date.now()-days*864e5,O=log.filter(e=>new Date(e.t).getTime()<lim);if(!O.length)return;
+ const ch=new Set();O.forEach(e=>{const x=items.find(i=>i.id===e.i);if(!x)return;const k=e.k||"out";if(k==="out")x.u+=e.q;else if(k==="ret")x.u-=e.q;else x.t+=e.q;ch.add(x)});ch.forEach(wItem);
+ log=log.filter(e=>!O.includes(e));O.forEach(e=>W(()=>DB.collection("log").doc(String(e.id)).delete()));persist();render()}
+function applySet(){if(!$("bl").getAttribute("src")){$("bl").src=LOGO;$("gl").src=LOGO}$("h1").textContent=TT;$("sb").textContent=SB;document.title=TT}
+function setTheme(v){const r=document.documentElement;if(v==="auto")r.removeAttribute("data-theme");else r.dataset.theme=v;try{localStorage.setItem("inv_theme",v)}catch(e){}}
+try{setTheme(localStorage.getItem("inv_theme")||"auto")}catch(e){}
+function saveSet(){const v=Math.min(50,Math.max(1,+$("thv").value||10));TH=v/100;TT=$("ttv").value.trim()||"স্টকের খাতা";SB=$("sbv").value.trim();
+ try{localStorage.setItem("inv_th",String(TH));localStorage.setItem("inv_set",JSON.stringify({title:TT,sub:SB}))}catch(e){}
+ writeSettings();applySet();render()}
+function backup(){if(!dl)return;try{localStorage.setItem("inv_lb",String(Date.now()))}catch(e){}render();dl.save({filename:"stock-backup.json",data:JSON.stringify({v:1,items:items.map(rec),log,reqs})}).catch(()=>{})}
+function pick(){$("rf").value="";$("rf").click()}
+async function restore(o){const S=v=>String(v==null?"":v),N=v=>+v||0;
+ const I=(o.items||[]).map(x=>({id:N(x.id),n:S(x.n),d:S(x.d),t:N(x.t),u:N(x.u),c:S(x.c),un:S(x.un),ct:S(x.ct),lc:S(x.lc),pr:N(x.pr),lm:N(x.lm)})).filter(x=>x.id&&x.n);
+ const L=(o.log||[]).map(e=>({id:N(e.id),t:S(e.t),i:N(e.i),n:S(e.n),c:S(e.c),q:N(e.q),k:S(e.k)||"out",to:S(e.to),after:N(e.after),by:S(e.by)})).filter(e=>e.id&&e.q);
+ const oi=items.map(x=>x.id),ol=log.map(e=>e.id),orq=reqs.map(r=>r.id);items=I;log=L;reqs=(o.reqs||[]).filter(r=>r&&r.id&&Array.isArray(r.rows));persist();render();
+ if(DB){UP=true;try{for(const x of I)await DB.collection("items").doc(String(x.id)).set(x);for(const e of L)await DB.collection("log").doc(String(e.id)).set(e);for(const r of reqs)await DB.collection("req").doc(String(r.id)).set(r);for(const id of orq)if(!reqs.some(r=>r.id===id))await DB.collection("req").doc(String(id)).delete();
+  for(const id of oi)if(!I.some(x=>x.id===id))await DB.collection("items").doc(String(id)).delete();
+  for(const id of ol)if(!L.some(e=>e.id===id))await DB.collection("log").doc(String(id)).delete()}catch(e){$("sync").textContent="রিস্টোর অনলাইনে পুরো হয়নি, আবার চেষ্টা করুন"}UP=false;upd()}}
+function renderAdmin(){calc();
+ if(!AD){$("ad").innerHTML=`<div class="adc lgn"><h4>অনুমতি নেই</h4><p class="mu">অ্যাডমিনের কাজ করার অনুমতি এই অ্যাকাউন্টে নেই। অ্যাপের মালিক বা Editor অ্যাকাউন্টে খুলে অ্যাডমিন ইউজার দিয়ে লগইন করুন।</p></div>`;return}
+ const cs=["বিজ্ঞানবাক্স","উৎকর্ষ"];
+ const rows=cs.map(c=>{const A=items.filter(x=>x.c===c);return `<tr><td>${c}</td><td>${bn(A.length)}</td><td>${bn(nz(A,x=>x.T))}</td><td>${bn(nz(A,x=>x.e))}</td><td>${bn(nz(A,x=>x.r))}</td></tr>`}).join("");
+ const at=items.filter(x=>st(x)!=="ok");
+ const old=log.filter(e=>new Date(e.t).getTime()<Date.now()-30*864e5).length;
+ $("ad").innerHTML=`<div class="adc" style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span>${SESS&&SESS.h===CH?"মূল ":""}অ্যাডমিন হিসেবে লগইন করা আছে</span><button class="ghost" onclick="logout()">বের হন</button></div><div class="adc"><h4>প্রতিষ্ঠান অনুযায়ী হিসাব</h4><div class="w"><table><tr><th>প্রতিষ্ঠান</th><th>আইটেম</th><th>মোট</th><th>বিতরণ</th><th>বাকি</th></tr>${rows}</table></div></div>
+ <div class="adc"><h4>কম/শেষ হয়ে আসা আইটেম (${bn(at.length)})</h4>${at.map(x=>`<div class="ai"><span>${E(x.n)} <small>${E(x.c)}</small></span><span><b class="${st(x)}">${st(x)==="out"?"শেষ":"বাকি "+bn(x.r)}</b> <button onclick="openY(${x.id})">+ যোগ</button></span></div>`).join("")||"<p class='mu'>সবকিছু ঠিক আছে।</p>"}</div>
+ ${usersHtml()}<div class="adc"><h4>সাধারণ সেটিং</h4><label class="mu">অ্যাপের নাম</label><input id="ttv" class="fi" value="${E(TT)}"><label class="mu">উপশিরোনাম</label><input id="sbv" class="fi" value="${E(SB)}"><label class="mu">কম স্টকের সীমা: বাকি মোটের এই শতাংশের কম হলে "কম" ধরা হবে</label><div class="bar2"><input id="thv" type="number" min="1" max="50" value="${Math.round(TH*100)}" style="width:90px"> % <button class="add" onclick="saveSet()">সেভ করুন</button></div></div>
+ <div class="adc"><h4>থিম (এই ডিভাইসে)</h4><div class="bar2"><select id="thm" onchange="setTheme(this.value)"><option value="auto">অটো</option><option value="light">লাইট</option><option value="dark">ডার্ক</option></select></div></div>
+ <div class="adc"><h4>ব্যাকআপ ও রিস্টোর</h4><p class="mu">${lastBkTxt()} পুরো আইটেম ও লগ একটা JSON ফাইলে। রিস্টোর করলে বর্তমান ডেটা পুরোপুরি বদলে যায়।</p><div class="bar2"><button onclick="backup()" ${dl?"":"disabled"}>ব্যাকআপ নামান</button><button onclick="xlsxOut()" ${dl?"":"disabled"}>Excel (.xlsx) নামান</button><button onclick="pick()">ফাইল থেকে রিস্টোর</button></div></div>
+ ${histHtml()}${importHtml()}<div class="adc"><h4>লগ পরিষ্কার</h4><p class="mu">লগ মুছলেও স্টকের হিসাব ঠিক থাকে। শুধু ইতিহাস মোছে।</p><div class="bar2"><button onclick="ask('৩০ দিনের আগের ${bn(old)}টি এন্ট্রি মুছবেন? স্টক ঠিক থাকবে।',()=>fold(30))" ${old?"":"disabled"}>৩০ দিনের আগের (${bn(old)})</button><button onclick="ask('পুরো লগ (${bn(log.length)}টি) মুছবেন? স্টক ঠিক থাকবে।',()=>fold(-1))" ${log.length?"":"disabled"}>পুরো লগ (${bn(log.length)})</button></div></div><div class="adc"><h4>অ্যাডমিন পাসওয়ার্ড বদলান</h4><p class="mu">নতুন পাসওয়ার্ড দিন (কমপক্ষে ৬ অক্ষর)। সব ডিভাইসে একই থাকবে।</p><input id="npw" class="fi" type="password" autocomplete="new-password"><div class="bar2"><button class="add" onclick="changePw()">বদলান</button><span id="pwm" class="mu" style="margin:0"></span></div></div>`;try{$("thm").value=localStorage.getItem("inv_theme")||"auto"}catch(e){}}
+
+const PRCSS=`.pd{font-family:"Hind Siliguri",sans-serif;color:#111;background:#fff;font-size:15px;line-height:1.5}.pd .ph{display:flex;align-items:center;justify-content:center;gap:12px}.pd .ph img{width:62px;height:62px;border-radius:12px}.pd h2{margin:0;text-align:center;font-size:24px}.pd h3{margin:2px 0 14px;text-align:center;font-size:17px;font-weight:600}.pd .mt{display:flex;justify-content:space-between;margin:4px 0}.pd table{width:100%;border-collapse:collapse;margin-top:10px}.pd th,.pd td{border:1px solid #333;padding:6px 8px;text-align:left}.pd th{background:#eee}.pd .n{text-align:center}.pd .nt{margin-top:12px}.pd .sg{display:flex;justify-content:space-between;margin-top:70px}.pd .sg.s2{margin-top:44px}.pd .sg span{border-top:1px solid #333;padding-top:4px;min-width:150px;text-align:center}`;
+const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const fd=d=>String(d||"").split("-").reverse().join("-").replace(/\d/g,x=>"০১২৩৪৫৬৭৮৯"[x]);
+function nextNo(){let m=0;reqs.forEach(r=>{const n=+String(r.no).replace(/\D/g,"");if(n>m)m=n});return "RQ-"+String(m+1).padStart(4,"0")}
+function newDraft(){return {no:nextNo(),d:today(),to:"",c:"বিজ্ঞানবাক্স",note:"",rows:[],sid:null,done:false,st:"req",ap:""}}
+function loadDraft(){try{const x=JSON.parse(localStorage.getItem("inv_rqd")||"null");if(x&&Array.isArray(x.rows))return x}catch(e){}return newDraft()}
+const saveDraft=()=>{try{localStorage.setItem("inv_rqd",JSON.stringify(RD))}catch(e){}};
+const avl=i=>{const x=items.find(y=>y.id===i);return x?x.r:0};
+function touch(){if(RD.st==="ok"){RD.st="req";RD.ap=""}}
+const stTxt=r=>r.done||r.st==="done"?"বিতরণ হয়েছে":r.st==="ok"?"অনুমোদিত"+(r.ap?" ("+E(r.ap)+")":""):"চাওয়া হয়েছে";
+function addRow(id){if(RD.done)return;touch();const x=items.find(i=>i.id===id);if(!x)return;if(!RD.rows.some(r=>r.i===id))RD.rows.push({i:id,n:x.n,q:1});saveDraft();renderReq()}
+function setQ(k,v){touch();RD.rows[k].q=Math.max(1,Math.floor(+v||1));saveDraft();renderReq()}
+function delRow(k){touch();RD.rows.splice(k,1);saveDraft();renderReq()}
+function fld(k,v){RD[k]=v;saveDraft()}
+function newReq(){RD=newDraft();saveDraft();renderReq()}
+function pdoc(r,o){o=o||{};const tot=r.rows.reduce((a,x)=>a+x.q,0);
+ return `<div class="pd"><div class="ph">${r.c==="বিজ্ঞানবাক্স"?`<img src="${LOGO}" alt="">`:""}<h2>${E(r.c)}</h2></div><h3>${o.ch?"চালান / রিসিভ কপি":"চাহিদাপত্র (রিকুইজিশন)"}${o.cp?" - "+o.cp:""}</h3><div class="mt"><span>নং: <b>${E(r.no)}</b></span><span>তারিখ: <b>${fd(r.d)}</b></span></div><div class="mt"><span>প্রাপক / বিভাগ: <b>${E(r.to)||"........................"}</b></span></div><table><thead><tr><th class="n">ক্রমিক</th><th>আইটেমের নাম</th><th class="n">পরিমাণ</th><th>মন্তব্য</th></tr></thead><tbody>${r.rows.map((x,k)=>`<tr><td class="n">${bn(k+1)}</td><td>${E(x.n)}</td><td class="n">${bn(x.q)}</td><td></td></tr>`).join("")}<tr><td></td><td><b>মোট</b></td><td class="n"><b>${bn(tot)}</b></td><td></td></tr></tbody></table>${r.note?`<div class="nt">নোট: ${E(r.note)}</div>`:""}<div class="sg ${o.ch?"s2":""}">${o.ch?"<span>প্রদানকারী (অফিস)</span><span>গ্রহণকারী (নাম ও স্বাক্ষর)</span>":"<span>প্রস্তুতকারী</span><span>অনুমোদনকারী</span><span>গ্রহণকারী</span>"}</div></div>`}
+function commit(){if(!RD.rows.length)return null;const old=reqs.find(q=>q.id===RD.sid);
+ const r={id:RD.sid||Date.now(),no:RD.no,d:RD.d,to:RD.to,c:RD.c,note:RD.note,rows:RD.rows.map(x=>({i:x.i,n:x.n,q:x.q})),done:!!RD.done,st:RD.done?"done":(RD.st||"req"),ap:RD.ap||"",by:old?old.by:(SESS?SESS.e:""),at:old?old.at:new Date().toISOString()};
+ const k=reqs.findIndex(q=>q.id===r.id);if(k>=0)reqs[k]=r;else reqs.unshift(r);RD.sid=r.id;saveDraft();W(()=>DB.collection("req").doc(String(r.id)).set(r));persist();return r}
+function msg(t){const m=$("rqm");if(m)m.textContent=t}
+function doPrint(r){$("pr").innerHTML="<style>"+PRCSS+"</style>"+pdoc(r);setTimeout(()=>{try{window.print()}catch(e){msg("এই ভিউতে প্রিন্ট চালু নেই। 'ফাইল নামান' দিয়ে HTML ফাইল খুলে প্রিন্ট করুন।")}},60)}
+function printReq(){const r=commit();if(!r){msg("আগে অন্তত একটা আইটেম যোগ করুন");return}renderReq();doPrint(r)}
+function rePrint(id){const r=reqs.find(q=>q.id===id);if(r)doPrint(r)}
+function dlReq(){if(!dl)return;const r=commit();if(!r){msg("আগে অন্তত একটা আইটেম যোগ করুন");return}renderReq();
+ const h='<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><title>'+E(r.no)+'</title><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet"><style>body{margin:20px}@media print{.np{display:none}@page{size:A4;margin:14mm}body{margin:0}}'+PRCSS+'</style></head><body><button class="np" onclick="print()" style="margin-bottom:12px;padding:8px 16px">প্রিন্ট করুন</button>'+pdoc(r)+'</body></html>';
+ dl.save({filename:"requisition-"+r.no+".html",data:h}).catch(()=>{})}
+function useReq(id){const r=reqs.find(q=>q.id===id);if(!r)return;RD={no:r.no,d:r.d,to:r.to,c:r.c,note:r.note||"",rows:r.rows.map(x=>({...x})),sid:r.id,done:!!r.done,st:r.st||(r.done?"done":"req"),ap:r.ap||""};saveDraft();renderReq();window.scrollTo&&window.scrollTo(0,0)}
+function delReq(id){ask("এই রিকুইজিশন মুছবেন? (স্টকের কোনো পরিবর্তন হবে না)",()=>{reqs=reqs.filter(q=>q.id!==id);W(()=>DB.collection("req").doc(String(id)).delete());if(RD&&RD.sid===id){RD.sid=null;RD.done=false;saveDraft()}persist();renderReq()})}
+function approve(){if(!AD||RD.done)return;if(!RD.rows.length){msg("আগে অন্তত একটা আইটেম যোগ করুন");return}RD.st="ok";RD.ap=SESS?SESS.e:"";commit();renderReq()}
+function distReq(){if(!RD.rows.length){msg("আগে অন্তত একটা আইটেম যোগ করুন");return}if(!AD&&RD.st!=="ok"){msg("অনুমোদন ছাড়া স্টক থেকে বাদ দেওয়া যাবে না। আগে অ্যাডমিনের অনুমোদন লাগবে।");return}
+ ask("প্রতিটি আইটেমের পরিমাণ স্টক থেকে বাদ যাবে এবং বিতরণ লগে লেখা হবে। মজুদের বেশি চাইলে শুধু যতটুকু আছে ততটুকু বাদ যাবে। নিশ্চিত?",()=>{
+  if(AD&&RD.st!=="ok"){RD.st="ok";RD.ap=SESS?SESS.e:""}RD.done=true;const r=commit();if(!r)return;calc();let n=0,cut=0;
+  r.rows.forEach(w=>{const x=items.find(i=>i.id===w.i);if(!x)return;const q=Math.min(w.q,x.r);if(q<w.q)cut++;if(q<=0)return;x.e+=q;x.r-=q;
+   const e={id:Date.now()+n++,t:new Date().toISOString(),i:x.id,n:x.n,c:x.c,q,k:"out",by:SESS?SESS.e:"",to:(r.to?r.to+", ":"")+"রিকুইজিশন "+r.no,after:x.r};log.push(e);wLog(e)});
+  persist();render();renderReq();msg(cut?bn(cut)+"টি আইটেমে মজুদ কম ছিল, তাই কম বাদ গেছে":"স্টক থেকে বাদ দেওয়া হয়েছে")})}
+function updPick(){const el=$("pk");if(!el)return;const q=($("rqs")?$("rqs").value:"").trim().toLowerCase();
+ const L=items.filter(x=>(!q||x.n.toLowerCase().includes(q))&&!RD.rows.some(r=>r.i===x.id)).slice(0,q?20:8);
+ el.innerHTML=L.map(x=>`<div class="ai"><span>${E(x.n)} <small>${E(x.c)}, আছে ${bn(x.r)}</small></span><button onclick="addRow(${x.id})">+ যোগ</button></div>`).join("")||`<p class="mu">কিছু পাওয়া যায়নি</p>`}
+function renderReq(){calc();if(!RD)RD=loadDraft();const dis=RD.done?"disabled":"";
+ const rowsH=RD.rows.map((r,k)=>{const a=avl(r.i),low=r.q>a;return `<tr><td>${bn(k+1)}</td><td>${E(r.n)}<br><small class="${low?"wn":"mu2"}">${low?"মজুদ কম, আছে ":"মজুদ আছে "}${bn(a)}</small></td><td><input type="number" min="1" value="${r.q}" ${dis} onchange="setQ(${k},this.value)"></td><td>${dis?"":`<button onclick="delRow(${k})">✕</button>`}</td></tr>`}).join("")||`<tr><td colspan="4" class="mu">নিচের তালিকা থেকে আইটেম যোগ করুন।</td></tr>`;
+ const names=[...new Set([...reqs.map(r=>r.to),...log.map(l=>l.to)].filter(Boolean))].map(v=>`<option value="${E(v)}">`).join("");
+ const hist=reqs.slice().sort((a,b)=>String(b.at).localeCompare(String(a.at))).map(r=>`<div class="ai"><span><b>${E(r.no)}</b> <small>${fd(r.d)}, ${E(r.to)||"প্রাপক নেই"}, ${bn(r.rows.length)}টি আইটেম${", "+stTxt(r)}${r.by?", "+E(r.by):""}</small></span><span><button onclick="rePrint(${r.id})">প্রিন্ট</button> <button onclick="rePrintC(${r.id})">চালান</button> <button onclick="useReq(${r.id})">খুলুন</button>${AD?` <button onclick="delReq(${r.id})">মুছুন</button>`:""}</span></div>`).join("")||`<p class="mu">এখনো কোনো রিকুইজিশন নেই।</p>`;
+ $("rq").innerHTML=`<div class="adc"><h4>${RD.sid?"রিকুইজিশন "+E(RD.no):"নতুন রিকুইজিশন"} <span class="tag">${stTxt(RD)}</span></h4>${RD.done?`<p class="mu">এই রিকুইজিশন থেকে স্টক বাদ দেওয়া হয়েছে। নতুন বানাতে "নতুন" চাপুন।</p>`:""}
+ <div class="rqf"><div><label class="mu">রিকুইজিশন নং</label><input class="fi" value="${E(RD.no)}" ${dis} oninput="fld('no',this.value)"></div>
+ <div><label class="mu">তারিখ</label><input class="fi" type="date" value="${E(RD.d)}" ${dis} oninput="fld('d',this.value)"></div>
+ <div><label class="mu">প্রাপক / বিভাগ</label><input class="fi" list="rql" value="${E(RD.to)}" ${dis} oninput="fld('to',this.value)"><datalist id="rql">${names}</datalist></div>
+ <div><label class="mu">প্রতিষ্ঠান</label><select class="fi" ${dis} onchange="fld('c',this.value)"><option ${RD.c==="বিজ্ঞানবাক্স"?"selected":""}>বিজ্ঞানবাক্স</option><option ${RD.c==="উৎকর্ষ"?"selected":""}>উৎকর্ষ</option></select></div></div>
+ <label class="mu">নোট (ঐচ্ছিক)</label><textarea class="fi" rows="2" ${dis} oninput="fld('note',this.value)">${E(RD.note)}</textarea></div>
+ <div class="adc"><h4>আইটেম (${bn(RD.rows.length)})</h4><div class="w"><table class="rqt"><tr><th>#</th><th>আইটেম</th><th>পরিমাণ</th><th></th></tr>${rowsH}</table></div>
+ ${dis?"":`<input class="fi" id="rqs" placeholder="আইটেম খুঁজে যোগ করুন" oninput="updPick()" style="margin-top:10px"><div id="pk"></div>`}</div>
+ <div class="adc"><div class="bar2"><button class="add" onclick="printReq()">প্রিন্ট করুন</button><button onclick="dlReq()" ${dl?"":"disabled"}>ফাইল নামান (HTML)</button>${RD.done||RD.st==="ok"||!AD?"":`<button onclick="approve()">অনুমোদন দিন</button>`}${RD.done?"":`<button onclick="distReq()">স্টক থেকে বাদ দিন</button>`}<button onclick="chReq()">চালান প্রিন্ট</button><button onclick="newReq()">নতুন</button></div>
+ <p class="mu" style="margin-top:8px">"প্রিন্ট করুন" চাপলে রিকুইজিশন সেভ হয়ে প্রিন্ট পেজ খুলবে। প্রিন্ট না এলে "ফাইল নামান" দিয়ে HTML ফাইল খুলে সেখান থেকে প্রিন্ট করুন। "স্টক থেকে বাদ দিন" চাপলে প্রতিটি আইটেম বিতরণ লগে যাবে।</p><p id="rqm" class="mu"></p></div>
+ <div class="adc"><h4>আগের রিকুইজিশন (${bn(reqs.length)})</h4>${hist}</div>`;
+ if(!RD.done)updPick()}
+
+function doPrintH(h){$("pr").innerHTML="<style>"+PRCSS+"</style>"+h;setTimeout(()=>{try{window.print()}catch(e){msg("এই ভিউতে প্রিন্ট চালু নেই। ফাইল নামিয়ে প্রিন্ট করুন।")}},60)}
+const chHtml=r=>`<div style="border-bottom:2px dashed #888;padding-bottom:10px;margin-bottom:14px">${pdoc(r,{ch:1,cp:"অফিস কপি"})}</div>${pdoc(r,{ch:1,cp:"প্রাপক কপি"})}`;
+function chReq(){const r=commit();if(!r){msg("আগে অন্তত একটা আইটেম যোগ করুন");return}renderReq();doPrintH(chHtml(r))}
+function rePrintC(id){const r=reqs.find(q=>q.id===id);if(r)doPrintH(chHtml(r))}
+
+function repData(){calc();if(!RM)RM=today().slice(0,7);
+ const inM=e=>{const d=new Date(e.t);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")===RM};
+ const A=log.filter(inM),ou=A.filter(e=>(e.k||"out")==="out"),rt=A.filter(e=>e.k==="ret"),ni=A.filter(e=>e.k==="in");
+ const sum=a=>a.reduce((m,e)=>m+e.q,0);
+ const grp=(a,f)=>{const m={};a.forEach(e=>{const k=f(e);m[k]=(m[k]||0)+e.q});return Object.entries(m).sort((x,y)=>y[1]-x[1])};
+ const val=a=>a.reduce((m,e)=>{const x=items.find(i=>i.id===e.i);return m+(x&&x.pr?x.pr*e.q:0)},0);
+ const days={};ou.forEach(e=>{const d=new Date(e.t).getDate();days[d]=(days[d]||0)+e.q});
+ return {ou,rt,ni,net:sum(ou)-sum(rt),sin:sum(ni),sret:sum(rt),val:val(ou),days,nd:new Date(+RM.slice(0,4),+RM.slice(5,7),0).getDate(),
+  byI:grp(ou,e=>e.n),byR:grp(ou,e=>String(e.to||"").replace(/,?\s*রিকুইজিশন\s+RQ-\d+/,"").trim()||"উল্লেখ নেই"),byC:grp(ou,e=>e.c),
+  sv:items.reduce((m,x)=>m+(x.pr?Math.max(0,x.r)*x.pr:0),0)}}
+const mlab=m=>String(m).replace(/\d/g,x=>D2[x]);
+function renderRep(){const R=repData(),big=v=>`<span style="font-size:22px;font-weight:700">${v}</span>`;
+ const bars=a=>{const mx=a.length?a[0][1]:1;return a.slice(0,12).map(([k,v])=>`<div class="rb"><span>${E(k)}</span><div><i style="width:${Math.max(3,Math.round(v/mx*100))}%"></i></div><b>${bn(v)}</b></div>`).join("")||`<p class="mu">এই মাসে কিছু নেই</p>`};
+ const dm=Math.max(1,...Object.values(R.days));
+ const chart=Array.from({length:R.nd},(_,i)=>{const v=R.days[i+1]||0;return `<div class="col" title="${i+1} তারিখ: ${v}"><i style="height:${Math.round(v/dm*100)}%"></i><span>${bn(i+1)}</span></div>`}).join("");
+ $("rp").innerHTML=`<div class="adc"><div class="bar2"><label class="mu" style="margin:0">মাস</label><input type="month" id="rm" value="${RM}" onchange="RM=this.value;renderRep()" style="width:auto;padding:8px 12px;border:1px solid var(--ln);border-radius:12px;background:var(--bg)"><button class="add" onclick="printRep()">রিপোর্ট প্রিন্ট</button></div></div>
+ <div class="wk"><div><b>মোট বিতরণ (ফেরত বাদে)</b>${big(bn(R.net))}</div><div><b>বিতরণের এন্ট্রি</b>${big(bn(R.ou.length))}</div><div><b>স্টক যোগ</b>${big(bn(R.sin))}</div><div><b>ফেরত</b>${big(bn(R.sret))}</div>${R.val?`<div><b>বিতরণের আনুমানিক মূল্য</b>${big(bn(Math.round(R.val))+" টাকা")}</div>`:""}${R.sv?`<div><b>বর্তমান স্টকের মূল্য</b>${big(bn(Math.round(R.sv))+" টাকা")}</div>`:""}</div>
+ <div class="adc"><h4>দিন অনুযায়ী বিতরণ</h4><div class="chart">${chart}</div></div>
+ <div class="adc"><h4>আইটেম অনুযায়ী</h4>${bars(R.byI)}</div><div class="adc"><h4>প্রাপক / ইভেন্ট অনুযায়ী</h4>${bars(R.byR)}</div><div class="adc"><h4>প্রতিষ্ঠান অনুযায়ী</h4>${bars(R.byC)}</div>`}
+function printRep(){const R=repData(),tb=(h,a)=>`<table><thead><tr><th>${h}</th><th class="n">পরিমাণ</th></tr></thead><tbody>${a.map(([k,v])=>`<tr><td>${E(k)}</td><td class="n">${bn(v)}</td></tr>`).join("")||"<tr><td colspan=2>কিছু নেই</td></tr>"}</tbody></table>`;
+ doPrintH(`<div class="pd"><h2>${E(TT)}</h2><h3>মাসিক বিতরণ রিপোর্ট - ${mlab(RM)}</h3><div class="mt"><span>মোট বিতরণ (ফেরত বাদে): <b>${bn(R.net)}</b></span><span>এন্ট্রি: <b>${bn(R.ou.length)}</b></span></div><div class="mt"><span>স্টক যোগ: <b>${bn(R.sin)}</b></span><span>ফেরত: <b>${bn(R.sret)}</b></span></div>${tb("আইটেম",R.byI)}<div style="height:12px"></div>${tb("প্রাপক / ইভেন্ট",R.byR)}</div>`)}
+const D2="০১২৩৪৫৬৭৮৯";
+const num=v=>{const n=parseFloat(String(v==null?"":v).replace(/[০-৯]/g,d=>D2.indexOf(d)).replace(/[,\s]/g,""));return isNaN(n)?0:n};
+function parseCSV(t,del){const R=[];let r=[],c="",q=false;for(let i=0;i<t.length;i++){const ch=t[i];
+ if(q){if(ch==='"'){if(t[i+1]==='"'){c+='"';i++}else q=false}else c+=ch}
+ else if(ch==='"')q=true;else if(ch===del){r.push(c);c=""}
+ else if(ch==="\n"||ch==="\r"){if(ch==="\r"&&t[i+1]==="\n")i++;r.push(c);c="";if(r.some(v=>v.trim()))R.push(r);r=[]}else c+=ch}
+ r.push(c);if(r.some(v=>v.trim()))R.push(r);return R}
+function rowsToItems(R){if(!R.length)return[];
+ const HS={n:["আইটেম","নাম","item","name"],d:["তারিখ","date"],t:["মোট","total","পরিমাণ","qty","quantity"],u:["বিতরণ","used","distributed"],c:["প্রতিষ্ঠান","company"],un:["একক","unit"],ct:["ক্যাটাগরি","category"],lc:["অবস্থান","আলমারি","location"],pr:["দাম","price"]};
+ const h=R[0].map(v=>String(v==null?"":v).trim().toLowerCase()),col={};
+ Object.keys(HS).forEach(k=>{const i=h.findIndex(c=>HS[k].some(w=>c===w||c.startsWith(w)));if(i>=0)col[k]=i});
+ let body=R;if(col.n!==undefined)body=R.slice(1);else{const w=Math.max(...R.map(r=>r.length));if(w>=7)Object.assign(col,{n:1,d:2,t:3,u:4,c:6});else if(w>=3)Object.assign(col,{n:0,t:1,u:2,c:3});else Object.assign(col,{n:0,t:1})}
+ const S=(r,k)=>col[k]===undefined?"":String(r[col[k]]==null?"":r[col[k]]).trim();
+ return body.map(r=>{const c=S(r,"c");return {n:S(r,"n"),d:S(r,"d"),t:num(S(r,"t")),u:num(S(r,"u")),c:c==="উৎকর্ষ"||c==="বিজ্ঞানবাক্স"?c:(F||"বিজ্ঞানবাক্স"),un:S(r,"un"),ct:S(r,"ct"),lc:S(r,"lc"),pr:num(S(r,"pr")),lm:0}}).filter(x=>x.n)}
+function importItems(A){const ex=new Set(items.map(x=>x.n+"|"+x.c)),add=[];let skip=0,id=Math.max(0,...items.map(i=>i.id),...log.map(l=>l.i),...hist.map(h=>h.x.id));
+ A.forEach(x=>{const k=x.n+"|"+x.c;if(ex.has(k)){skip++;return}ex.add(k);x.id=++id;x.u=Math.min(x.u,x.t);add.push(x)});
+ const m=t=>{const el=$("im");if(el)el.textContent=t};
+ if(!add.length){m("নতুন কোনো আইটেম পাওয়া যায়নি"+(skip?" ("+bn(skip)+"টি আগে থেকে আছে)":""));return}
+ ask(bn(add.length)+"টি নতুন আইটেম যোগ হবে"+(skip?" ("+bn(skip)+"টি আগে থেকে আছে বলে বাদ)":"")+"। এগিয়ে যাবেন?",()=>{add.forEach(x=>{items.push(x);wItem(x)});persist();render();m(bn(add.length)+"টি আইটেম যোগ হয়েছে")})}
+const delim=t=>t.split("\n")[0].includes("\t")?"\t":",";
+function importText(){const t=$("imt").value.replace(/^\ufeff/,"");if(!t.trim())return;importItems(rowsToItems(parseCSV(t,delim(t))))}
+function loadX(){return new Promise((res,rej)=>{if(window.XLSX)return res();const e=document.createElement("script");e.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";e.onload=()=>res();e.onerror=()=>rej();document.head.appendChild(e)})}
+function importFile(f){const m=t=>{const el=$("im");if(el)el.textContent=t};
+ if(/\.xlsx?$/i.test(f.name)){loadX().then(()=>f.arrayBuffer()).then(b=>{const wb=XLSX.read(b),ws=wb.Sheets[wb.SheetNames[0]];importItems(rowsToItems(XLSX.utils.sheet_to_json(ws,{header:1,raw:false,defval:""})))}).catch(()=>m("Excel ফাইল পড়া যায়নি (ইন্টারনেট লাগে)"))}
+ else{const r=new FileReader();r.onload=()=>{const t=String(r.result).replace(/^\ufeff/,"");importItems(rowsToItems(parseCSV(t,delim(t))))};r.readAsText(f)}}
+async function xlsxOut(){if(!dl)return;try{await loadX()}catch(e){$("sync").textContent="Excel ফাইলের জন্য ইন্টারনেট লাগবে";return}
+ calc();const wb=XLSX.utils.book_new(),K={out:"বিতরণ","in":"স্টক যোগ",ret:"ফেরত",adj:"মিলান"};
+ XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([["ক্রমিক","আইটেম","তারিখ","মোট","বিতরণ","বাকি","প্রতিষ্ঠান","একক","ক্যাটাগরি","অবস্থান","দাম"],...items.map(x=>[x.id,x.n,x.d,x.T,x.e,x.r,x.c,x.un||"",x.ct||"",x.lc||"",x.pr||0])]),"স্টক");
+ XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([["তারিখ","ধরন","আইটেম","প্রতিষ্ঠান","পরিমাণ","বাকি","কাকে/নোট","কে করেছে"],...log.map(e=>[new Date(e.t).toLocaleString("en-GB"),K[e.k||"out"],e.n,e.c,e.q,e.after,e.to||"",e.by||""])]),"লেনদেন");
+ dl.save({filename:"stock.xlsx",data:XLSX.write(wb,{type:"array",bookType:"xlsx"})}).catch(()=>{})}
+const lastBkTxt=()=>{const d=lbDays();return d<0?"এখনো ব্যাকআপ নেওয়া হয়নি।":"শেষ ব্যাকআপ "+bn(d)+" দিন আগে।"};
+function histHtml(){return `<div class="adc"><h4>এডিট ইতিহাস ও ট্র্যাশ (${bn(hist.length)})</h4><p class="mu">কেউ আইটেম বদলালে বা মুছলে আগের অবস্থা এখানে থাকে। "ফিরিয়ে আনুন" চাপলে আগের অবস্থা ফিরে আসে।</p>${hist.slice(0,15).map(h=>`<div class="ai"><span>${h.act==="del"?"মোছা":"বদলানো"}: ${E(h.x.n)} <small>${E(h.by||"")}, ${new Date(h.t).toLocaleString("bn-BD",{dateStyle:"medium",timeStyle:"short"})}</small></span><button onclick="restoreHist(${h.id})">ফিরিয়ে আনুন</button></div>`).join("")||`<p class="mu">এখনো কিছু নেই।</p>`}</div>`}
+function importHtml(){return `<div class="adc"><h4>ইমপোর্ট (CSV / Excel)</h4><p class="mu">পুরনো শিট থেকে আইটেম ঢুকান। প্রথম সারিতে হেডার (আইটেম, তারিখ, মোট, বিতরণ, প্রতিষ্ঠান, একক, ক্যাটাগরি, অবস্থান, দাম) থাকলে ভালো। না থাকলে (ক্রমিক, আইটেম, তারিখ, মোট, বিতরণ, বাকি, প্রতিষ্ঠান) ক্রম ধরা হবে। একই নাম ও প্রতিষ্ঠানের আইটেম বাদ যাবে।</p><div class="bar2"><button onclick="$('imf').click()">ফাইল বাছুন (.csv / .xlsx)</button></div><textarea id="imt" class="fi" rows="3" placeholder="অথবা Excel থেকে কপি করে এখানে পেস্ট করুন"></textarea><div class="bar2"><button onclick="importText()">পেস্ট থেকে ইমপোর্ট</button><span id="im" class="mu" style="margin:0"></span></div></div>`}
+function applyRole(){gate();render();if(V==="a")renderAdmin()}
+function fillFilters(){const set=(id,arr,all)=>{const el=$(id),cur=el.value,h=`<option value="">${all}</option>`+arr.map(v=>`<option>${E(v)}</option>`).join("");if(el.dataset.h!==h){el.innerHTML=h;el.dataset.h=h}el.value=cur;el.hidden=!arr.length};
+ set("fc",[...new Set(items.map(x=>x.ct).filter(Boolean))].sort(),"সব ক্যাটাগরি");set("fl",[...new Set(items.map(x=>x.lc).filter(Boolean))].sort(),"সব অবস্থান")}
+function lbDays(){try{const lb=+localStorage.getItem("inv_lb")||0;return lb?Math.floor((Date.now()-lb)/864e5):-1}catch(e){return -1}}
+function render(){calc();fillFilters();
+ const q=$("q").value.trim().toLowerCase(),fc=$("fc").value,fl=$("fl").value;
+ const so=$("so").value,rt=x=>x.T?x.r/x.T:1;
+ const L=items.filter(x=>(!F||x.c===F)&&(!fc||x.ct===fc)&&(!fl||x.lc===fl)&&(!q||(x.n+" "+(x.ct||"")+" "+(x.lc||"")).toLowerCase().includes(q))&&(!LW||st(x)!=="ok")).sort((a,b)=>so==="low"?rt(a)-rt(b):so==="n"?a.n.localeCompare(b.n,"bn"):0);
+ $("ls").innerHTML=L.map(x=>{const r=x.r,s=st(x),p=x.T?Math.max(0,Math.min(100,Math.round(r/x.T*100))):0,un=x.un?" "+E(x.un):"";
+  return `<li class="r ${s}"><div class="nm"><b>${E(x.n)}</b><small><span class="tag">${E(x.c)}</span>${x.ct?`<span class="tag">${E(x.ct)}</span>`:""}${x.lc?`<span class="tag">অবস্থান: ${E(x.lc)}</span>`:""}${E(x.d)||"তারিখ নেই"}</small></div>
+  <div class="st"><div class="ring"><svg viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" ${p?"":'style="display:none" '}cx="20" cy="20" r="16" stroke-dasharray="${(p*1.005).toFixed(1)} 100.5" pathLength="100.5"/></svg><em>${bn(p)}%</em></div><div class="nu"><strong>${s==="out"?"স্টক শেষ":"বাকি "+bn(r)+un}</strong><span>মোট ${bn(x.T)}, বিতরণ ${bn(x.e)}${x.pr?`, মূল্য ${bn(Math.round(Math.max(0,r)*x.pr))} টাকা`:""}</span></div></div>
+  <div class="ac">${r>0?`<button class="go" onclick="openG(${x.id})">বিতরণ</button>`:""}${x.e>0?`<button onclick="openTx(${x.id},'ret')">ফেরত</button>`:""}${AD?`<button onclick="openTx(${x.id},'in')">+ যোগ</button><button onclick="openTx(${x.id},'adj')">মিলান</button><button onclick="openF(${x.id})">এডিট</button><button onclick="del(${x.id})">মুছুন</button>`:""}</div></li>`}).join("")||`<li class="empty">কিছু পাওয়া যায়নি। অন্য শব্দে খুঁজুন বা নতুন আইটেম যোগ করুন।</li>`;
+ $("k1").textContent=bn(items.length);$("k2").textContent=bn(items.filter(x=>st(x)!=="out").length);$("k3").textContent=bn(items.filter(x=>st(x)!=="ok").length);
+ {const d=lbDays(),b=$("bk");b.hidden=!(AD&&(d<0||d>=7));if(!b.hidden)b.innerHTML=(d<0?"এখনো ব্যাকআপ নেওয়া হয়নি।":"শেষ ব্যাকআপ "+bn(d)+" দিন আগে।")+` <button onclick="backup()" ${dl?"":"disabled"}>এখনই ব্যাকআপ নিন</button>`}
+ renderLog();{const a=document.activeElement,t=a&&a.closest&&/INPUT|SELECT|TEXTAREA/.test(a.tagName)&&a.closest("#ad,#rq,#rp");if(!t){if(V==="a")renderAdmin();if(V==="q")renderReq();if(V==="p")renderRep()}}
+}
+function wkSum(d){const lim=Date.now()-d*864e5,A=log.filter(e=>(e.k||"out")==="out"&&new Date(e.t).getTime()>=lim),m={};A.forEach(e=>m[e.n]=(m[e.n]||0)+e.q);
+ const top=Object.entries(m).sort((a,b)=>b[1]-a[1])[0];return {n:A.length,q:A.reduce((a,e)=>a+e.q,0),top}}
+function renderLog(){const k=$("q").value.trim().toLowerCase();
+ const w7=wkSum(7),w30=wkSum(30);
+ $("wk").innerHTML=`<div><b>গত ৭ দিন</b><span>${bn(w7.n)} বার, মোট ${bn(w7.q)} বিতরণ${w7.top?"<br>সবচেয়ে বেশি: "+E(w7.top[0])+" ("+bn(w7.top[1])+")":""}</span></div><div><b>গত ৩০ দিন</b><span>${bn(w30.n)} বার, মোট ${bn(w30.q)} বিতরণ${w30.top?"<br>সবচেয়ে বেশি: "+E(w30.top[0])+" ("+bn(w30.top[1])+")":""}</span></div>`;
+ const KT={out:"বিতরণ","in":"স্টক যোগ",ret:"ফেরত",adj:"মিলান"};
+ const L=log.filter(e=>(!F||e.c===F)&&(!k||e.n.toLowerCase().includes(k))).slice().sort((a,b)=>String(b.t).localeCompare(String(a.t)));
+ $("lg").innerHTML=L.map(e=>{const kk=e.k||"out",sg=kk==="out"?"−"+bn(e.q):(e.q>0?"+":"−")+bn(Math.abs(e.q)),cl=kk==="out"||(kk==="adj"&&e.q<0)?"neg":"pos";
+  return `<li class="r"><div class="nm"><b>${E(e.n)}</b><small><span class="tag">${KT[kk]||KT.out}</span><span class="tag">${E(e.c)}</span>${new Date(e.t).toLocaleString("bn-BD",{dateStyle:"medium",timeStyle:"short"})}</small></div>
+ <div class="nu"><strong class="${cl}">${sg}</strong><span>বাকি ${bn(e.after)}${e.to?", "+E(e.to):""}${e.by?", "+E(e.by):""}</span></div>
+ <div class="ac">${AD?`<button onclick="undo(${e.id})">বাতিল</button>`:""}</div></li>`}).join("")||`<li class="empty">এখনো কোনো লেনদেন লেখা হয়নি। স্টক ট্যাবে "বিতরণ" চাপলে এখানে এন্ট্রি আসবে।</li>`}
+function openF(id){eid=id||null;calc();const x=items.find(i=>i.id===id)||{n:"",d:"",T:"",e:0,c:F||"বিজ্ঞানবাক্স"};$("dt").textContent=id?"আইটেম এডিট":"নতুন আইটেম";
+ $("n").value=x.n;$("dd").value=x.d;$("t").value=x.T;$("u").value=x.e;$("c").value=x.c;$("un").value=x.un||"";$("ct").value=x.ct||"";$("lc").value=x.lc||"";$("pr").value=x.pr||"";$("lm").value=x.lm||"";
+ const dl2=k=>[...new Set(items.map(i=>i[k]).filter(Boolean))].map(v=>`<option value="${E(v)}">`).join("");$("ctl").innerHTML=dl2("ct");$("lcl").innerHTML=dl2("lc");$("d").showModal()}
+function hpush(act,x){const h={id:Date.now()+Math.floor(Math.random()*1000),t:new Date().toISOString(),by:SESS?SESS.e:"",act,x:rec(x)};hist.unshift(h);if(hist.length>300)hist.length=300;W(()=>DB.collection("hist").doc(String(h.id)).set(h))}
+function restoreHist(id){const h=hist.find(y=>y.id===id);if(!h)return;const r=h.x,cur=items.find(i=>i.id===r.id);
+ if(cur){hpush("edit",cur);Object.assign(cur,r);wItem(cur)}else{const x={...r};items.push(x);wItem(x)}
+ hist=hist.filter(y=>y.id!==id);W(()=>DB.collection("hist").doc(String(id)).delete());persist();render()}
+function save(){const o={n:$("n").value.trim(),d:$("dd").value.trim(),t:+$("t").value||0,u:+$("u").value||0,c:$("c").value,un:$("un").value.trim(),ct:$("ct").value.trim(),lc:$("lc").value.trim(),pr:+$("pr").value||0,lm:Math.min(90,Math.max(0,+$("lm").value||0))};if(!o.n)return;
+ const e0=Math.min(o.u,o.t);o.t=Math.max(0,o.t-(eid?sumK(eid,"in"):0));o.u=Math.max(0,e0-(eid?sumL(eid):0));
+ if(eid){const x=items.find(i=>i.id===eid),b=rec(x);Object.assign(x,o);if(JSON.stringify(b)!==JSON.stringify(rec(x)))hpush("edit",b);wItem(x)}
+ else{const x={id:Math.max(0,...items.map(i=>i.id),...log.map(l=>l.i),...hist.map(h=>h.x.id))+1,...o};items.push(x);wItem(x)}
+ persist();$("d").close();render()}
+function del(id){did=id;$("xt").textContent=items.find(i=>i.id===id).n;$("x").showModal()}
+function doDel(){const id=did,x=items.find(i=>i.id===id);if(x)hpush("del",x);items=items.filter(i=>i.id!==id);W(()=>DB.collection("items").doc(String(id)).delete());persist();$("x").close();render()}
+function openY(id){yid=id;const x=items.find(i=>i.id===id);$("yt").textContent=x.n+" - স্টক যোগ";$("yq").value="";$("y").showModal()}
+function addStock(){const x=items.find(i=>i.id===yid),q=+$("yq").value;if(q>0){x.t+=q;wItem(x);persist();render()}$("y").close()}
+function fillRl(){$("rl").innerHTML=[...new Set(log.map(l=>l.to).filter(Boolean))].map(v=>`<option value="${E(v)}">`).join("")}
+function openG(id){gid=id;calc();fillRl();const x=items.find(i=>i.id===id);$("gt").textContent=x.n;$("gq").value="";$("gr").value="";$("gd").value=today();$("gq").max=x.r;$("g").showModal()}
+function give(){calc();const x=items.find(i=>i.id===gid),q=Math.min(+$("gq").value||0,x.r);
+ if(q>0){const e={id:Date.now(),t:dstamp($("gd").value),i:x.id,n:x.n,c:x.c,q,k:"out",to:$("gr").value.trim(),after:x.r-q,by:SESS?SESS.e:""};log.push(e);wLog(e);persist();render()}$("g").close()}
+function openTx(id,k){TXK=k;TXI=id;calc();const x=items.find(i=>i.id===id);if(!x)return;fillRl();
+ const M={in:["স্টক যোগ","কত পরিমাণ নতুন এলো?","কোথা থেকে / নোট (ঐচ্ছিক)"],ret:["ফেরত নিন","কত পরিমাণ ফেরত এলো?","কে ফেরত দিল / নোট (ঐচ্ছিক)"],adj:["স্টক মিলান","গুনে এখন কত পেলেন?","নোট (ঐচ্ছিক)"]}[k];
+ $("txt").textContent=x.n+" - "+M[0];$("txl").textContent=M[1];$("txn").textContent=M[2];$("txq").value="";$("txq").min=k==="adj"?0:1;$("txr").value="";$("txd").value=today();
+ $("txh").textContent=k==="adj"?"সিস্টেমে এখন বাকি আছে "+bn(x.r)+(x.un?" "+x.un:""):k==="ret"?"এ পর্যন্ত বিতরণ হয়েছে "+bn(x.e):"";$("tx").showModal()}
+function doTx(){const x=items.find(i=>i.id===TXI),k=TXK;if(!x)return;calc();if($("txq").value==="")return;const v=+$("txq").value;if(isNaN(v))return;
+ let q=v,after;
+ if(k==="in"){if(q<=0)return;after=x.r+q}else if(k==="ret"){q=Math.min(q,x.e);if(q<=0)return;after=x.r+q}else{q=v-x.r;if(q===0){$("tx").close();return}after=v}
+ const e={id:Date.now(),t:dstamp($("txd").value),i:x.id,n:x.n,c:x.c,q,k,to:$("txr").value.trim(),after,by:SESS?SESS.e:""};log.push(e);wLog(e);persist();$("tx").close();render()}
+function undo(id){log=log.filter(l=>l.id!==id);W(()=>DB.collection("log").doc(String(id)).delete());persist();render()}
+function csv(){if(!dl)return;const q=v=>`"${String(v).replace(/"/g,'""')}"`;const lg=V==="l";calc();
+ const K={out:"বিতরণ","in":"স্টক যোগ",ret:"ফেরত",adj:"মিলান"};
+ const head=lg?"তারিখ,ধরন,আইটেম,প্রতিষ্ঠান,পরিমাণ,বাকি,কাকে/নোট,কে করেছে":"ক্রমিক,আইটেম,তারিখ,মোট,বিতরণ,বাকি,প্রতিষ্ঠান,একক,ক্যাটাগরি,অবস্থান,দাম";
+ const rows=lg?log.map(e=>[q(new Date(e.t).toLocaleString("en-GB")),K[e.k||"out"],q(e.n),q(e.c),e.q,e.after,q(e.to||""),q(e.by||"")].join(",")):items.map(x=>[x.id,q(x.n),x.d,x.T,x.e,x.r,q(x.c),q(x.un||""),q(x.ct||""),q(x.lc||""),x.pr||0].join(","));
+ dl.save({filename:lg?"distribution-log.csv":"inventory.csv",data:"\ufeff"+head+"\n"+rows.join("\n")}).catch(()=>{})}
+async function upAll(){if(!AD)return;const I=items.map(rec),L=log.slice(),Q=reqs.slice(),UU=users.slice(),HH=hist.slice();UP=true;$("up").disabled=true;$("up").textContent="উঠছে...";
+ try{for(const x of I)await DB.collection("items").doc(String(x.id)).set(x);for(const e of L)await DB.collection("log").doc(String(e.id)).set(e);for(const r of Q)await DB.collection("req").doc(String(r.id)).set(r);for(const u of UU)await DB.collection("users").doc(String(u.id)).set(u);for(const h of HH)await DB.collection("hist").doc(String(h.id)).set(h)}catch(e){$("sync").textContent="আপলোড শেষ হয়নি, আবার চাপুন"}
+ UP=false;$("up").disabled=false;$("up").textContent="ডেটা অনলাইনে তুলুন";upd()}
+let gi=false,gl=false,ri=[],rl=[];
+function upd(){if(!DB||UP||!(gi&&gl))return;
+ if(ri.length||rl.length){if(ri.length){items=ri.sort((a,b)=>a.id-b.id);log=rl.sort((a,b)=>a.t<b.t?-1:1)}else log=rl.sort((a,b)=>a.t<b.t?-1:1);persist();render();$("up").hidden=true}else $("up").hidden=!items.length||!AD;
+ $("sync").textContent="অনলাইনে সেভ হচ্ছে, সব ডিভাইসে একই ডেটা"}
+(async()=>{try{if(!(window.claude&&claude.use))return;
+ claude.use("downloads").then(d=>{dl=d;$("csvb").hidden=!d;if(V==="a")renderAdmin()}).catch(()=>{});
+ DB=await claude.use("db");if(!DB)return;
+ const u=await claude.use("user");ROLE=!!(u&&(u.isOwner()||u.canEdit()));applyRole();
+ const er=()=>{$("sync").textContent="অনলাইন সংযোগ হয়নি, শুধু এই ব্রাউজারে সেভ হচ্ছে"};
+ DB.collection("items").onSnapshot(s=>{ri=s.docs.map(d=>d.data());gi=true;upd()},er);
+ DB.collection("settings").onSnapshot(s=>{const d=s.docs.map(d=>d.data()).find(d=>d&&d.th);if(d){TH=d.th/100;TT=d.title||TT;if(d.ch){CH=d.ch;try{localStorage.setItem("inv_ch",CH)}catch(e){}}SB=d.sub!=null?d.sub:SB;applySet();try{localStorage.setItem("inv_set",JSON.stringify({title:TT,sub:SB}))}catch(e){}try{localStorage.setItem("inv_th",String(TH))}catch(e){}render()}},()=>{});
+ DB.collection("req").onSnapshot(s=>{const a=s.docs.map(d=>d.data());if(a.length||ri.length){reqs=a.sort((x,y)=>String(y.at).localeCompare(String(x.at)));persist();if(V==="q")render()}},er);
+ DB.collection("users").onSnapshot(s=>{const a=s.docs.map(d=>d.data());gu=true;if(a.length||ri.length){users=a;persist();verify()}gate();if(V==="a")renderAdmin()},er);
+ DB.collection("hist").onSnapshot(s=>{const a=s.docs.map(d=>d.data());if(a.length||ri.length){hist=a.sort((x,y)=>String(y.t).localeCompare(String(x.t)));persist();if(V==="a")renderAdmin()}},er);
+ DB.collection("log").onSnapshot(s=>{rl=s.docs.map(d=>d.data());gl=true;upd()},er)}catch(e){DB=null}})();
+$("rf").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{let o;try{o=JSON.parse(r.result)}catch(x){$("sync").textContent="ফাইলটা ঠিক JSON না";return}ask("এই ফাইল দিয়ে বর্তমান সব ডেটা বদলাবেন?",()=>restore(o))};r.readAsText(f)};applySet();gate();$("gate").onkeydown=e=>{if(e.key==="Enter"&&e.target.id==="lpw")doLogin()};
+$("q").oninput=render;$("so").onchange=render;$("fc").onchange=render;$("fl").onchange=render;$("imf").onchange=e=>{const f=e.target.files[0];if(f)importFile(f);e.target.value=""};$("lw").onclick=()=>{LW=!LW;$("lw").classList.toggle("on",LW);render()};
+$("seg").onclick=e=>{const b=e.target.closest("button");if(!b)return;F=b.dataset.v;[...$("seg").children].forEach(c=>c.classList.toggle("on",c===b));render()};
+function tab(v){V=v;[...$("tabs").children].forEach(c=>c.classList.toggle("on",c.dataset.v===v));$("ls").hidden=V!=="s";$("lg").hidden=V!=="l";$("wk").hidden=V!=="l";$("ad").hidden=V!=="a";$("tl").hidden=V==="a"||V==="q"||V==="p";$("rq").hidden=V!=="q";$("rp").hidden=V!=="p";if(V==="a")renderAdmin();if(V==="q")renderReq();if(V==="p")renderRep();$("csvb").textContent=V==="l"?"লগ CSV নামান":"CSV নামান"}
+$("tabs").onclick=e=>{const b=e.target.closest("button");if(b)tab(b.dataset.v)};
+render();
+</script></body></html>
